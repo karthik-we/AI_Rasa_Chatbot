@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <style>
+            .rw-conversation-container .rw-header{background-color:darkblue;}
+            .rw-conversation-container .rw-messages-container{background-color: rgb(245, 245, 72);}
+            .rw-conversation-container .rw-messages-container .rw-message .rw-client{background-color: darkblue;}
+            .rw-conversation-container .rw-messages-container .rw-message .rw-response{background-color:rgb(29, 209, 29);}
+        </style>
+        <script>!(function () {
+            let e = document.createElement("script"),
+              t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+              "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+              // Replace 1.x.x with the version that you want
+              (e.async = !0),
+              (e.onload = () => {
+                window.WebChat.default(
+                  {
+                    initPayLoad :'/greet',
+                    customData: { language: "en" },
+                    socketUrl: "http://localhost:5005",
+                    title : "CIT",
+                    subtitle : "வணக்கம் சொல்லி தொடங்குங்கள்",
+                    profileAvatar : "./logo.jpg",
+                    showMessageDate : true,
+                    inputTextFieldHint : "உங்கள் மனதில் என்ன இருக்கிறது?...",
+                    customMessageDelay : (message) => {
+                      let delay= message.length*10;
+                      if (delay > 3 *1000) delay = 3*1000;
+                      if (delay<800) delay = 800;
+                      return delay;
+                    }
+                    // add other props here
+                  },
+                  null
+                );
+              }),
+              t.insertBefore(e, t.firstChild);
+          })();
+          </script>
+    </body>
+</html>
